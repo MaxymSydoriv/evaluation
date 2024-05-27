@@ -11,6 +11,7 @@
 
 ``./gradlew clean build``
 ## Generating docker images
+change docker username in gradle.properties file
 ``./gradlew buildImage``
 ## Deployment to EKS
 ``export DOCKER_REPO=<set user name>``
