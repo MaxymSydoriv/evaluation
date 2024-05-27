@@ -1,0 +1,5 @@
+rootProject.name = 'evaluation'
+include 'nfl-integration-service'
+include 'nfl-model'
+include 'nfl-game-service'
+

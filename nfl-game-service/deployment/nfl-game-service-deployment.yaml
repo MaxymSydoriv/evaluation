@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfl-game-service-app
+spec:
+  selector:
+    matchLabels:
+      run: nfl-game-service-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: nfl-game-service-app
+    spec:
+      containers:
+        - name: nfl-game-service
+          image: $DOCKER_REPO/nfl-game-service:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: $KAFKA_BOOTSTRAP_SERVERS
+            - name: POSTGRES_URL
+              value: $POSTGRES_URL
+            - name: POSTGRES_PORT
+              value: $POSTGRES_PORT

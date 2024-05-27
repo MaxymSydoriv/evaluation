@@ -1,0 +1,35 @@
+plugins {
+	id 'java'
+}
+
+apply plugin: 'idea'
+
+allprojects {
+	group = 'com.evaluation'
+	version= '1.0.0'
+}
+
+subprojects {
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+	apply plugin: 'java'
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_17
+
+	dependencies {
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+		compileOnly 'org.projectlombok:lombok:1.18.22'
+		annotationProcessor 'org.projectlombok:lombok:1.18.22'
+		testCompileOnly 'org.projectlombok:lombok:1.18.22'
+		testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+	}
+}
+
+

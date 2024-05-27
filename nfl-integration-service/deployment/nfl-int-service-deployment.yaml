@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfl-int-service-app
+spec:
+  selector:
+    matchLabels:
+      run: nfl-int-service-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: nfl-int-service-app
+    spec:
+      containers:
+        - name: nfl-int-service
+          image: $DOCKER_REPO/nfl-integration-service:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: $KAFKA_BOOTSTRAP_SERVERS
