@@ -1,4 +1,3 @@
-export DOCKER_REPO = <changeme>
 cd infrastructure
 terraform init
 terraform apply
