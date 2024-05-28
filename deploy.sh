@@ -1,11 +1,11 @@
-
+export DOCKER_REPO = <changeme>
 cd infrastructure
 terraform init
 terraform apply
 
-KAFKA_BOOTSTRAP_SERVERS="$(terraform output -raw kafka_servers)"
-POSTGRES_URL="$(terraform output -raw rds_endpoint)"
-POSTGRES_PORT="$(terraform output -raw rds_port)"
+export KAFKA_BOOTSTRAP_SERVERS="$(terraform output -raw kafka_servers)"
+export POSTGRES_URL="$(terraform output -raw rds_endpoint)"
+export POSTGRES_PORT="$(terraform output -raw rds_port)"
 
 cd ..
 ./gradlew clean build

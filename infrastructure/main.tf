@@ -1,3 +1,4 @@
+#Scrip does not provide best security and design practises for AWS Infrastructure
 provider "aws" {
   region = "us-west-2"
 }
