@@ -5,6 +5,12 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
+@NamedEntityGraph(
+        name = "player-with-team",
+        attributeNodes = {
+                @NamedAttributeNode("team")
+        }
+)
 @Data
 @Entity
 @Table(name = "PLAYER")
