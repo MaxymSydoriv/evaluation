@@ -15,7 +15,7 @@ public class PlayerResource {
     private DtoCrudService<Player, PlayerDTO, Integer> playerService;
 
     @GetMapping("/{id}")
-    public PlayerDTO getById(Integer id) {
+    public PlayerDTO getById(@PathVariable Integer id) {
         return playerService.getById(id);
     }
 
@@ -27,7 +27,7 @@ public class PlayerResource {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(Integer id) {
+    public void delete(@PathVariable Integer id) {
         playerService.delete(id);
     }
 }
