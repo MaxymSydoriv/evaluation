@@ -279,7 +279,7 @@ resource "aws_db_instance" "default" {
   password             = "postgres"
   skip_final_snapshot  = true
   publicly_accessible  = false
-  vpc_security_group_ids = [module.vpc.default_security_group_id]
+  vpc_security_group_ids = [aws_security_group.all_worker_mgmt.id]
   db_subnet_group_name = aws_db_subnet_group.default.name
 }
 
