@@ -42,24 +42,6 @@ module "vpc" {
   }
 }
 
-#resource "aws_public_subnet_tag" "dev_eks_subnets" {
-#  provider    = var.region
-#  for_each    = toset( module.vpc.public_subnets)
-#  resource_id = each.key
-#  key         = "kubernetes.io/role/elb"
-#  value       = "1"
-#  depends_on  = [module.vpc]
-#}
-#
-#resource "aws_private_subnet_tag" "dev_eks_subnets" {
-#  provider    = var.region
-#  for_each    = toset( module.vpc.private_subnets)
-#  resource_id = each.id
-#  key         = "kubernetes.io/role/internal-elb"
-#  value       = "1"
-#  depends_on  = [module.vpc]
-#}
-
 resource "aws_security_group" "worker_group_mgmt_one" {
   name_prefix = "worker_group_mgmt_one"
   vpc_id      = module.vpc.vpc_id
@@ -72,6 +54,13 @@ resource "aws_security_group" "worker_group_mgmt_one" {
     cidr_blocks = [
       "10.0.0.0/8",
     ]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
@@ -89,6 +78,13 @@ resource "aws_security_group" "all_worker_mgmt" {
       "172.16.0.0/12",
       "192.168.0.0/16",
     ]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
