@@ -253,7 +253,7 @@ resource "aws_msk_cluster" "nfl_msk" {
     instance_type   = "kafka.m5.large"
 
     client_subnets = module.vpc.private_subnets
-    security_groups = [module.vpc.default_security_group_id]
+    security_groups = [aws_security_group.all_worker_mgmt.id]
     storage_info {
       ebs_storage_info {
         volume_size = 10
