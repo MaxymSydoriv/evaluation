@@ -60,7 +60,7 @@ resource "aws_security_group" "worker_group_mgmt_one" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0", "::/0"]
   }
 }
 
@@ -84,7 +84,7 @@ resource "aws_security_group" "all_worker_mgmt" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0", "::/0"]
   }
 }
 
