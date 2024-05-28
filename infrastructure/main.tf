@@ -158,7 +158,7 @@ resource "aws_iam_role" "alb_ingress_role" {
         "Condition": {
           "StringEquals": {
             "${replace(module.eks.cluster_oidc_issuer_url, "https://", "")}:aud": [
-              "sts.amazonaws.com"
+              "[sts.amazonaws.com]"
             ]
           }
         }
