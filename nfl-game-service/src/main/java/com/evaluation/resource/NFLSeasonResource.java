@@ -1,7 +1,8 @@
 package com.evaluation.resource;
 
+import com.evaluation.entity.Season;
 import com.evaluation.model.SeasonDTO;
-import com.evaluation.service.NFLSeasonService;
+import com.evaluation.service.DtoCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class NFLSeasonResource {
 
     @Autowired
-    private NFLSeasonService seasonService;
+    private DtoCrudService<Season, SeasonDTO, Integer> seasonService;
 
     @GetMapping("/{id}")
     public SeasonDTO getById(@PathVariable Integer id) {
